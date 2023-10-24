@@ -6,4 +6,4 @@
 !.bash*
 !.profile
 !.vimrc
-!.vim/
+!.vim/*
