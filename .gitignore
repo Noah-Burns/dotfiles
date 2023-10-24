@@ -1,11 +1,26 @@
-# ignore by default
+### ignore by default
 /*
 
-# excpet
+### excpet
 !.gitignore
+
+# bash
 !.bash*
 .bash_history
 !.profile
+
+# vim
 !.vimrc
 !.vim/
 /.vim/.*
+/.vim/backup
+
+# tmux
+!.tmux.conf
+
+# w3m
+!.w3m
+
+# misc
+!/.config
+
