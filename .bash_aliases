@@ -1,9 +1,13 @@
+alias ls='ls --color=auto'
+alias l='ls -CF'
 alias ll="ls -lh"
 alias la="ls -Alh"
-alias dfh="df -h | grep -v tmpfs"
+alias lt=' ll -rt | tail'
+alias df='df -h | grep -v tmpfs'
 alias duh="du -h --max-depth=1 | tail -n10"
 alias hi="history | less"
 alias py="python3"
-alias gitdot="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias dc="docker-compose up -d"
 alias dcd="docker-compose down"
+alias brc='. ~/.bashrc'
+alais lzd='lazydocker'
