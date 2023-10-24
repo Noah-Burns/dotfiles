@@ -1,9 +1,11 @@
-#
-*
+# ignore by default
+/*
 
-#
+# excpet
 !.gitignore
 !.bash*
+.bash_history
 !.profile
 !.vimrc
-!.vim/*
+!.vim/
+/.vim/.*
