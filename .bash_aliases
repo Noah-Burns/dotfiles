@@ -10,4 +10,4 @@ alias py="python3"
 alias dc="docker-compose up -d"
 alias dcd="docker-compose down"
 alias brc='. ~/.bashrc'
-alais lzd='lazydocker'
+alias lzd='lazydocker'
