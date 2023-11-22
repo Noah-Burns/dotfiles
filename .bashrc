@@ -115,3 +115,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Recolor if root
+if [ "$EUID" -eq 0 ]; then
+  source ./.bashrc_root
+fi
+
