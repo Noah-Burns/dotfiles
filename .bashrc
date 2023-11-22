@@ -118,6 +118,6 @@ fi
 
 # Recolor if root
 if [ "$EUID" -eq 0 ]; then
-  source ./.bashrc_root
+  source ~/.bashrc_root
 fi
 
