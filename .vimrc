@@ -8,6 +8,10 @@
 "                 ╚═══╝  ╚═╝╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝
 "               
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""               
+set textwidth=0
+set wrapmargin=0
+set wrap
+set linebreak "(optional - breaks by word rather than character)
 
 " Disable compatibility with vi which can cause unexpected issues.
 set nocompatible
@@ -49,7 +53,7 @@ set nobackup
 set scrolloff=10
 
 " Do not wrap lines. Allow long lines to extend as far as the line goes.
-set nowrap
+"set nowrap
 
 " While searching though a file incrementally highlight matching characters as you type.
 set incsearch
