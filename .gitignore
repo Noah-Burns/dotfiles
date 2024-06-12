@@ -18,9 +18,6 @@
 # tmux
 !.tmux.conf
 
-# w3m
-!.w3m
-
 # misc
 !/.config
 

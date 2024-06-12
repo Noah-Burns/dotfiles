@@ -40,38 +40,6 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1='\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\$\[\033[00m\] '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -115,6 +83,43 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+#
+# PS1
+#
+PROMPT_COMMAND=__prompt_command
+B_BLUE="\[\e[1;34m\]"
+B_RED="\[\e[1;31m\]"
+B_GREEN="\[\e[1;32m\]"
+C="\[\e[0m\]"
+
+__prompt_command() {
+    local EXIT="$?"
+    PS1=""
+
+    if [ $EXIT != 0 ]; then
+        PS1+="❌ ${B_RED}$EXIT\n"
+    fi
+
+    if [ $USER = "root" ]; then
+        PS1+="${B_RED}root${B_GREEN}@"
+    else
+        PS1+="${B_GREEN}\u@"
+    fi
+
+    PS1+="\h${C}:${B_BLUE}\w"
+
+    if [ $USER = "root" ]; then
+        PS1+="${B_RED}# "
+    else
+        PS1+="${B_BLUE}\$ "
+    fi
+
+    PS1+=$C
+}
+
+#
+# pyenv
 #
 export PATH="${HOME}/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
