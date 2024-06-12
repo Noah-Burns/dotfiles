@@ -117,10 +117,3 @@ __prompt_command() {
 
     PS1+=$C
 }
-
-#
-# pyenv
-#
-export PATH="${HOME}/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
