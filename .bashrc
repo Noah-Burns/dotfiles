@@ -88,34 +88,38 @@ fi
 # PS1
 #
 PROMPT_COMMAND=__prompt_command
-B_BLUE="\[\e[1;34m\]"
-B_RED="\[\e[1;31m\]"
-B_GREEN="\[\e[1;32m\]"
-C="\[\e[0m\]"
+BOLD_BLUE="\[\e[1;34m\]"
+BOLD_RED="\[\e[1;31m\]"
+BOLD_GREEN="\[\e[1;32m\]"
+PROMPT_END="\[\e[0m\]"
 
 __prompt_command() {
     local EXIT="$?"
     PS1=""
 
     if [ $EXIT != 0 ]; then
-        PS1+="❌ ${B_RED}$EXIT\n"
+        PS1+="❌ ${BOLD_RED}$EXIT\n"
     fi
 
     if [ $USER = "root" ]; then
-        PS1+="${B_RED}root${B_GREEN}@"
+        PS1+="${BOLD_RED}root${BOLD_GREEN}@"
     else
-        PS1+="${B_GREEN}\u@"
+        PS1+="${BOLD_GREEN}\u@"
     fi
 
-    PS1+="\h${C}:${B_BLUE}\w"
+    PS1+="\h${C}:${BOLD_BLUE}\w"
 
     if [ $USER = "root" ]; then
-        PS1+="${B_RED}# "
+        PS1+="${BOLD_RED}# "
     else
-        PS1+="${B_BLUE}\$ "
+        PS1+="${BOLD_BLUE}\$ "
     fi
 
-    PS1+=$C
+    PS1+=$PROMPT_END
+
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        PS1="${BOLD_RED}(venv) $PS1"
+    fi 
 }
 
 #
