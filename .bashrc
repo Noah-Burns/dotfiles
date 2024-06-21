@@ -125,8 +125,7 @@ __prompt_command() {
 #
 # pyenv
 #
-ls ~/.pyenv &>> /dev/null
-if [ $? ]; then
+if [ -e ~/.pyenv ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init -)"
