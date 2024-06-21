@@ -101,6 +101,10 @@ __prompt_command() {
         PS1+="❌ ${BOLD_RED}$EXIT\n"
     fi
 
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        PS1+="${BOLD_RED}(venv) "
+    fi 
+
     if [ $USER = "root" ]; then
         PS1+="${BOLD_RED}root${BOLD_GREEN}@"
     else
@@ -116,10 +120,6 @@ __prompt_command() {
     fi
 
     PS1+=$PROMPT_END
-
-    if [[ -n "$VIRTUAL_ENV" ]]; then
-        PS1="${BOLD_RED}(venv) $PS1"
-    fi 
 }
 
 #
