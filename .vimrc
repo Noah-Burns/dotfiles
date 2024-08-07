@@ -29,7 +29,7 @@ filetype indent on
 syntax on
 
 " Add numbers to the file.
-set number
+"set number
 
 " Highlight cursor line underneath the cursor horizontally.
 set cursorline

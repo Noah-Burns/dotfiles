@@ -8,8 +8,8 @@ alias duh="du -h --max-depth=1 | sort -h | tail -n20"
 alias hi="history | less"
 alias hig="history | grep"
 alias py="python3"
-alias dc="docker-compose up -d"
-alias dcd="docker-compose down"
+alias dc="docker compose up -d"
+alias dcd="docker compose down"
 alias brc='. ~/.bashrc'
 alias lzd='lazydocker'
 alias t='tmux'
